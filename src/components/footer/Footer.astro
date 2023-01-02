@@ -1,0 +1,42 @@
+---
+---
+
+<div class="h-32">
+  <footer class="fixed bottom-0">
+    Powered by
+    <span class="mx-2 h-8">
+        <picture>
+            <source 
+              srcset="/footer/astro-logo-dark.svg" 
+              media="(prefers-color-scheme: dark)">
+            <img class="pt-0.5" width="96" src="/footer/astro-logo.svg">
+          </picture>
+
+    </span>
+    and
+    <span class="mx-2 h-5">
+        <picture>
+            <source 
+              srcset="/footer/tailwind-logo-dark.svg" 
+              media="(prefers-color-scheme: dark)">
+            <img class="pt-0.5" width="135" src="/footer/tailwind-logo.svg">
+          </picture>
+    </span>
+  </footer>
+</div>
+
+
+
+
+<style>
+    footer {
+        width: 100%;
+        height: 80px;
+        margin-top: 8px;
+        background-color: rgba(var(--accent), 0.7);
+        border-top: 1px solid rgba(var(--accent), 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>

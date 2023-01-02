@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import MainPageCard from "../components/card/MainPageCard.astro";
+
+import avatarReference from "/avatar.jpg";
+
+const cardsData = [
+	{
+		title: "Blog",
+		href: "/blog",
+		body: "My personal blog with programming, gaming and Linux related stuff",
+	},
+	{
+		title: "SourceHut",
+		href: "https://sr.ht/~alosarjos",
+		body: "Check the existing projects source code on SourceHut",
+	},
+	{
+		title: "GitHub",
+		href: "https://github.com/alosarjos",
+		body: "A GitHub mirror for SourceHut projects",
+	},
+];
+---
+
+<BaseLayout title="Alosarjos Website">
+	<div class="flex flex-row justify-center">
+		<img
+			class="rounded-full w-80 shadow-md shadow-black"
+			src={avatarReference}
+		/>
+	</div>
+	<h1 class="text-center mt-8">
+		Hi there! 👋 I'm <span class="text-gradient">@alosarjos</span>
+	</h1>
+	<p class="introducction">
+		Gamer and Programmer. The fact that I like <strong>Souls-like</strong> games
+		and <strong>Rust</strong> programming are probably related.
+	</p>
+	<ul role="list" class="link-card-grid">
+		{
+			cardsData.map((cardData) => (
+				<MainPageCard
+					title={cardData.title}
+					href={cardData.href}
+					body={cardData.body}
+				/>
+			))
+		}
+	</ul>
+</BaseLayout>
+
+<style>
+	.introducction {
+		line-height: 1.6;
+		margin: 1rem 0;
+		border: 1px solid rgba(var(--accent), 70%);
+		padding: 1rem;
+		border-radius: 0.4rem;
+	}
+	.introducction code {
+		font-size: 0.875em;
+		font-weight: bold;
+		background: rgba(var(--accent), 12%);
+		color: rgb(var(--accent));
+		border-radius: 4px;
+		padding: 0.3em 0.45em;
+	}
+	.introducction strong {
+		color: rgb(var(--accent));
+	}
+	.link-card-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+		gap: 1rem;
+		padding: 0;
+	}
+</style>

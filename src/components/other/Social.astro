@@ -1,0 +1,36 @@
+---
+const socialItems = [
+  {
+    image: "/twitter.svg",
+    url: "https://twitter.com/alosarjos",
+    alt: "twitter",
+  },
+  {
+    image: "/github.svg",
+    darkImage: "/github-dark.svg",
+    url: "https://github.com/alosarjos",
+    alt: "github",
+  },
+];
+---
+
+<div class="absolute w-20 flex flex-row gap-6 top-6 right-6">
+  {
+    socialItems.map((socialItem) => (
+      <a href={socialItem.url}>
+        <picture>
+          <source
+            srcset={socialItem.darkImage}
+            media="(prefers-color-scheme: dark)"
+          />
+          <img
+            class="pt-0.5"
+            width="135"
+            src={socialItem.image}
+            alt={socialItem.alt}
+          />
+        </picture>
+      </a>
+    ))
+  }
+</div>

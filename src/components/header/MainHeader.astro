@@ -1,0 +1,9 @@
+---
+import BackButton from "../button/BackButton.astro";
+import Social from "../other/Social.astro";
+---
+
+<div class="absolute top-0 w-screen px-6 pt-4 flex flex-row justify-between">
+    {Astro.url.pathname !== "/" && <BackButton />}
+    <Social />
+</div>

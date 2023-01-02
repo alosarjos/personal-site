@@ -1,0 +1,22 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout title={frontmatter.title}>
+    <section class="mt-20 flex flex-col items-center">
+        <h1 class="text-gradient mt-8">
+            {frontmatter.title}
+        </h1>
+        <div class="mt-6 prose dark:prose-invert prose-xl">
+            <slot />
+        </div>
+        <img
+            class="mt-20 rounded-lg"
+            src={frontmatter.image.url}
+            alt=""
+            srcset=""
+        />
+    </section>
+</BaseLayout>

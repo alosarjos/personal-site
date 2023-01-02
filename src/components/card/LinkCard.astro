@@ -1,0 +1,25 @@
+---
+
+---
+
+<div class="link-card transition duration-300 h-full">
+	<slot />
+</div>
+
+<style>
+    .link-card {
+		list-style: none;
+		display: flex;
+		padding: 0.15rem;
+		background-size: 400%;
+		border-radius: 0.5rem;
+		background-position: 100%;
+		border: 1px solid rgba(var(--accent), 60%);
+		box-shadow: 0px 6px 4px 1px rgba(var(--accent), 0.5);
+	}
+	
+	.link-card:is(:hover, :focus-within) {
+		box-shadow: 0px 6px 4px 1px rgba(var(--accent), 100%);
+		border: 1px solid rgba(var(--accent), 100%);
+	}
+</style>

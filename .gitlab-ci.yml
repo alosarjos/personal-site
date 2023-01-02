@@ -1,0 +1,12 @@
+default:
+  image: node:latest
+
+before_script:
+    - npm install -g netlify-cli pnpm --unsafe-perm=true
+    - pnpm install
+    - pnpm run build
+
+deploy:
+  stage: deploy
+  script:
+    - netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir dist/ --prod

@@ -1,0 +1,45 @@
+---
+import BlogEntryCard from "../../components/card/BlogEntryCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const allPosts = await Astro.glob("./posts/*.md");
+allPosts.sort(
+    (a, b) =>
+        Date.parse(b.frontmatter.pubDate) - Date.parse(a.frontmatter.pubDate)
+);
+---
+
+<BaseLayout title="Alosarjos Website">
+    <div class="flex flex-row justify-center">
+        <img
+            class="rounded-full w-80 shadow-md shadow-black"
+            src="/avatar.jpg"
+        />
+    </div>
+    <h1 class="text-center mt-8">
+        Hi there! 👋 I'm <span class="text-gradient">@alosarjos</span>
+    </h1>
+    <ul role="list" class="mt-8 blog-entries-list">
+        {
+            allPosts.map((post) => (
+                <BlogEntryCard
+                    href={post.url ?? ""}
+                    title={post.frontmatter.title}
+                    imageUrl={post.frontmatter.image.url}
+                    pubDate={new Date(post.frontmatter.pubDate)}
+                    body={post.rawContent()}
+                />
+            ))
+        }
+    </ul>
+</BaseLayout>
+
+<style>
+    .blog-entries-list {
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+        gap: 1rem;
+        padding: 0;
+    }
+</style>
